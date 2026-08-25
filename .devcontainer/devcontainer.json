@@ -1,4 +1,8 @@
 {
   "image": "mcr.microsoft.com/devcontainers/base",
-  "postStartCommand": "read -p 'Enter your input: ' user_input"
+  "onCreateCommand": {
+    "install-vp": "curl -fsSL https://vite.plus | bash",
+    "install-bun": "curl -fsSL https://bun.sh/install | bash",
+    "install-deno": "curl -fsSL https://deno.land/install.sh | sh -s -- -y"
+  }
 }

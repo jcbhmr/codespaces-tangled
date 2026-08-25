@@ -1,0 +1,15 @@
+{
+  "name": "codespaces-other-git-repository",
+  "private": true,
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^7"
+  },
+  "dependencies": {
+    "@opentui/core": "^0.5.8",
+    "execa": "^10.0.1"
+  }
+}
