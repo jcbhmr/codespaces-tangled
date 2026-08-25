@@ -1,0 +1,4 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/base",
+  "postStartCommand": "read -p 'Enter your input: ' user_input"
+}
