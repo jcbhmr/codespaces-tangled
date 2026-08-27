@@ -1,16 +1,20 @@
 # GitHub Codespaces ♥️ Tangled
 
-1. Create an App Password
-2. Add ATPROTO_HANDLE and ATPROTO_PASSWORD to your template's environment variables
+You can use GitHub Codespaces as your cloud IDE to work on Git projects hosted on [Tangled](https://tangled.org).
 
+**One time setup:**
 
-TODO
+1. Fork this repository under your own account. You will need to configure some codespaces secrets for your forked copy of this repository.
+2. Create a new SSH key pair. Use `ssh-keygen` or an online SSH key generator.
+3. Add the generated SSH public key to your Tangled profile.
+4. Set the `SSH_PRIVATE_KEY` repository codespaces secret to your generated SSH private key. This secret will be supplied as an environment variable to all codespaces tied to this repository.
 
-What I do right now
+**Use the template:**
 
-1. Create new repository on Tangled.org
-2. Create new SSH key pair in Codespace
-3. Add the SSH key manually to Tangled.org
-4. Remove everything in the Codespace
-5. Clone the repository to `.` from Tangled.org using the SSH key
-6. Develop
+_Make sure a Tangled repository already exists to `git clone` from._
+
+1. Click "Use this template" and then "Open in a codespace".
+2. `find . -mindepth 1 -delete` to remove everything from the codespace's source tree.
+3. `git clone <tangled-ssh-clone-url> .` to clone your Tangled repository into the current empty directory. Your SSH private key should already be populated.
+
+It's recommended to include [`ssh-import-from-env.bash`](.devcontainer/ssh-import-from-env.bash) in your dev container configuration so that if you ever trigger "Rebuild container" your SSH private key is automatically populated.
