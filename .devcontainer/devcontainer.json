@@ -1,5 +1,9 @@
 {
     "image": "mcr.microsoft.com/devcontainers/base:debian",
-    "onCreateCommand": ["bash", "-c", "install -m 600 <(printf '%s\\n' \"$SSH_PRIVATE_KEY\") .git/id && git config set core.sshCommand 'ssh -i \"$GIT_DIR/id\" -o IdentitiesOnly=yes'"],
-    "postAttachCommand": "read -p 'Clone SSH: ' remote_ssh_url && git remote set-url origin \"$remote_ssh_url\" && git fetch origin && git reset --hard origin/HEAD"
+    "onCreateCommand": [
+        "bash",
+        "-c",
+        "install -m 600 <(printf '%s\\n' \"$SSH_PRIVATE_KEY\") .git/id && git config set core.sshCommand 'ssh -i .git/id -o IdentitiesOnly=yes'"
+    ],
+    "postAttachCommand": "read -p 'Clone SSH: ' remote_ssh_url && git remote add origin \"$remote_ssh_url\" && git fetch origin && git reset --hard origin/HEAD"
 }
