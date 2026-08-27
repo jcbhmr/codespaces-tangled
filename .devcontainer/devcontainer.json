@@ -1,6 +1,5 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/base:debian",
-  "onCreateCommand": {
-    "ssh-import-from-env": ".devcontainer/ssh-import-from-env.bash"
-  }
+    "image": "mcr.microsoft.com/devcontainers/base:debian",
+    "onCreateCommand": ["bash", "-c", "install -m 600 <(printf '%s\\n' \"$SSH_PRIVATE_KEY\") .git/id && git config set core.sshCommand 'ssh -i \"$GIT_DIR/id\" -o IdentitiesOnly=yes'"],
+    "postAttachCommand": ["bash", "-c", "read -p 'Clone SSH: ' remote_ssh_url && (shopt -s dotglob && rm -rf *) && git clone \"$remote_ssh_url\" ."]
 }
